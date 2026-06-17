@@ -1,0 +1,375 @@
+/* 全局样式 - Manner 极简风格 */
+
+/* =============== 色彩规范 =============== */
+:root {
+  /* 活力橙 - 主色 */
+  --color-primary: #FF6B35;
+  --color-primary-dark: #E55A2B;
+  --color-primary-light: #FFF7ED;
+
+  /* 背景色 */
+  --color-bg: #FAFAFA;
+  --color-white: #FFFFFF;
+
+  /* 文字色 */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #666666;
+  --color-text-light: #999999;
+
+  /* 卡片背景 */
+  --color-card-bg: #FFFFFF;
+  --color-card-border: #E8E8E8;
+}
+
+/* =============== 覆盖图鸟UI组件默认样式 =============== */
+
+/* tn-card - 极简边框卡片 */
+.tn-card {
+  border: 1rpx solid #E8E8E8 !important;
+  background-color: var(--color-card-bg) !important;
+  border-radius: 12rpx !important;
+  padding: 24rpx !important;
+
+  /* 核心模块才保留边框 */
+  &.tn-card--border {
+    border: 1rpx solid var(--color-primary) !important;
+  }
+}
+
+/* tn-button - 极简按钮 */
+.tn-btn {
+  &--primary {
+    background: #FF6B35 !important;
+    color: var(--color-white) !important;
+    border: none !important;
+
+    &:active {
+      background: #E55A2B !important;
+    }
+  }
+
+  /* 成功按钮 - 绿色 */
+  &--success {
+    background: #FF6B35 !important;
+    color: var(--color-white) !important;
+    border: none !important;
+
+    &:active {
+      background: #E55A2B !important;
+    }
+  }
+
+  /* 危险按钮 - 红色 */
+  &--danger {
+    background: #EF4444 !important;
+    color: var(--color-white) !important;
+    border: none !important;
+
+    &:active {
+      background: #DC2626 !important;
+    }
+  }
+
+  /* 镂空按钮 */
+  &--plain {
+    background: transparent !important;
+
+    &.tn-btn--primary {
+      color: #FF6B35 !important;
+      border: 1rpx solid #FF6B35 !important;
+      background: transparent !important;
+    }
+
+    &.tn-btn--success {
+      color: #FF6B35 !important;
+      border: 1rpx solid #FF6B35 !important;
+      background: transparent !important;
+    }
+
+    &.tn-btn--danger {
+      color: #EF4444 !important;
+      border: 1rpx solid #EF4444 !important;
+      background: transparent !important;
+    }
+  }
+
+  /* 次要按钮为浅灰色边框 */
+  &--default {
+    background-color: var(--color-white) !important;
+    color: var(--color-text-secondary) !important;
+    border: 1rpx solid #E8E8E8 !important;
+  }
+
+  /* 取消默认水波纹、放大、弹跳、渐变效果 */
+  &::after {
+    display: none !important;
+  }
+
+  /* 取消悬浮效果 */
+  &.hover {
+    transform: none !important;
+  }
+}
+
+/* tn-nav-bar - 极简导航栏 */
+.tn-nav-bar {
+  background: #FFFFFF !important;
+  border-bottom: 1rpx solid #E8E8E8 !important;
+
+  .tn-nav-bar__title {
+    font-family: 'Source Han Sans CN', 'PingFang SC', sans-serif;
+    font-weight: 600 !important;
+    color: #1A1A1A !important;
+  }
+
+  /* 取消右侧默认图标 */
+  .tn-nav-bar__right {
+    display: none !important;
+  }
+
+  /* 取消底部阴影 */
+  &::after {
+    display: none !important;
+  }
+}
+
+/* tn-swiper - 极简轮播 */
+.tn-swiper {
+  .tn-indicator {
+    .tn-dot {
+      background-color: #CCCCCC !important;
+      opacity: 0.5;
+
+      &.active {
+        background-color: #FF6B35 !important;
+        opacity: 1;
+      }
+    }
+  }
+
+  /* 取消默认指示器美化 */
+  .tn-indicator-line {
+    display: none !important;
+  }
+}
+
+/* tn-tabs - 极简标签栏 */
+.tn-tabs {
+  &__item {
+    &--active {
+      color: var(--color-primary) !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  &__bar {
+    background: var(--color-primary) !important;
+    border-radius: 4rpx !important;
+  }
+}
+
+/* tn-tabbar - 极简底部导航 */
+.tn-tabbar {
+  background-color: var(--color-white) !important;
+  border-top: 1rpx solid #E8E8E8 !important;
+
+  &__item {
+    color: var(--color-text-light) !important;
+
+    &--active {
+      color: var(--color-primary) !important;
+      font-weight: 600 !important;
+    }
+
+    /* 取消默认高亮渐变、悬浮效果 */
+    .tn-icon {
+      font-size: 24rpx !important;
+      transition: none !important;
+    }
+  }
+
+  /* 取除悬浮效果 */
+  &.hover {
+    transform: none !important;
+  }
+}
+
+/* tn-input - 简化输入框 */
+.tn-input {
+  background-color: var(--color-white) !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 6px !important;
+  
+  &--focus {
+    border-color: var(--color-primary) !important;
+  }
+}
+
+/* tn-form-item - 简化表单项 */
+.tn-form-item {
+  margin-bottom: 15rpx !important;
+}
+
+/* tn-list - 简化列表 */
+.tn-list {
+  background-color: transparent !important;
+  
+  &__item {
+    background-color: var(--color-white) !important;
+    border-bottom: 1px solid #E5E7EB !important;
+    padding: 24rpx !important;
+    margin-bottom: 15rpx !important;
+    border-radius: 6px !important;
+  }
+}
+
+/* tn-tag - 简化标签 */
+.tn-tag {
+  border-radius: 4px !important;
+  padding: 8rpx 16rpx !important;
+  font-size: 24rpx !important;
+}
+
+/* tn-empty - 空状态 */
+.tn-empty {
+  padding: 120rpx 0 !important;
+  
+  &__icon {
+    font-size: 120rpx !important;
+    color: var(--color-text-light) !important;
+  }
+  
+  &__text {
+    color: var(--color-text-secondary) !important;
+    font-size: 28rpx !important;
+    margin-top: 24rpx !important;
+  }
+}
+
+/* tn-loading - 简化加载 */
+.tn-loading {
+  &__spinner {
+    color: var(--color-primary) !important;
+  }
+}
+
+/* tn-toast - 简化提示,关闭动画 */
+.tn-toast {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  border-radius: 6px !important;
+  padding: 20rpx 32rpx !important;
+  font-size: 28rpx !important;
+  
+  /* 取消弹出动画 */
+  animation: none !important;
+}
+
+/* tn-modal - 简化弹窗,关闭切换动画 */
+.tn-modal {
+  &__box {
+    border-radius: 8px !important;
+    animation: none !important;
+  }
+}
+
+/* =============== 全局工具类 =============== */
+
+/* 页面背景 */
+.page {
+  min-height: 100vh;
+  background: #FAFAFA;
+  padding-bottom: 20rpx;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* 卡片容器 */
+.card {
+  background-color: var(--color-card-bg);
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  border: 1rpx solid #E8E8E8;
+
+  &--primary {
+    background: #FF6B35;
+    color: var(--color-white);
+    border: none;
+  }
+}
+
+/* 文字样式 */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-light {
+  color: var(--color-text-light);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+/* 字体大小 */
+.text-xs {
+  font-size: 24rpx;
+}
+
+.text-sm {
+  font-size: 26rpx;
+}
+
+.text-base {
+  font-size: 28rpx;
+}
+
+.text-lg {
+  font-size: 30rpx;
+}
+
+.text-xl {
+  font-size: 32rpx;
+}
+
+/* 布局 */
+.flex {
+  display: flex;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 间距 */
+.mt-xs { margin-top: 10rpx; }
+.mt-sm { margin-top: 20rpx; }
+.mt-base { margin-top: 30rpx; }
+.mt-lg { margin-top: 40rpx; }
+
+.mb-xs { margin-bottom: 10rpx; }
+.mb-sm { margin-bottom: 20rpx; }
+.mb-base { margin-bottom: 30rpx; }
+.mb-lg { margin-bottom: 40rpx; }
+
+.p-xs { padding: 10rpx; }
+.p-sm { padding: 15rpx; }
+.p-base { padding: 20rpx; }
+.p-lg { padding: 30rpx; }

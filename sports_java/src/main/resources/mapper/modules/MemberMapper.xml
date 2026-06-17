@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sports.modules.member.mapper.MemberMapper">
+
+    <!-- 通用结果映射 -->
+    <resultMap id="BaseResultMap" type="com.sports.modules.member.Member">
+        <id column="id" property="id" />
+        <result column="member_id" property="memberId" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="avatar" property="avatar" />
+        <result column="level" property="level" />
+        <result column="points" property="points" />
+        <result column="register_time" property="registerTime" />
+        <result column="last_consume_time" property="lastConsumeTime" />
+        <result column="deleted" property="deleted" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="created_by" property="createdBy" />
+        <result column="updated_by" property="updatedBy" />
+    </resultMap>
+
+    <!-- 通用查询列 -->
+    <sql id="Base_Column_List">
+        id, member_id, name, phone, avatar, level, points,
+        register_time, last_consume_time, deleted,
+        create_time, update_time, created_by, updated_by
+    </sql>
+
+    <!-- 原子增加积分（防止并发竞态） -->
+    <update id="addPointsAtomic">
+        UPDATE tb_member
+        SET points = points + #{points},
+            update_time = NOW()
+        WHERE member_id = #{memberId}
+          AND deleted = 0
+    </update>
+
+    <!-- 原子扣除积分（防止并发竞态和积分不足） -->
+    <update id="deductPointsAtomic">
+        UPDATE tb_member
+        SET points = points - #{points},
+            update_time = NOW()
+        WHERE member_id = #{memberId}
+          AND deleted = 0
+          AND points &gt;= #{points}
+    </update>
+
+</mapper>

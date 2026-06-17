@@ -1,0 +1,29 @@
+/* 极简主题变量 */
+
+/* 主色调 - 沉稳深橙（单一强调色） */
+--tn-color-primary: #C2652E;
+--tn-color-primary-light: #D4824F;
+--tn-color-primary-dark: #A85525;
+
+/* 辅助色 - 统一使用主色，不再多色 */
+--tn-color-secondary: #C2652E;
+--tn-color-accent: #C2652E;
+--tn-color-success: #5B8C5A;
+--tn-color-warning: #C2652E;
+--tn-color-error: #C24848;
+
+/* 背景色 - 暖白极简 */
+--tn-bg-color-primary: #FAFAF8;
+--tn-bg-color-secondary: #F3F3F0;
+--tn-bg-color-tertiary: #FFFFFF;
+
+/* 文字色 - 暖灰 */
+--tn-text-color-primary: #2A2A26;
+--tn-text-color-secondary: #8A8A84;
+--tn-text-color-regular: #6B6B65;
+
+/* 边框色 */
+--tn-border-color: #E8E8E3;
+
+/* 渐变色 - 克制使用 */
+--gradient-primary: linear-gradient(135deg, #C2652E 0%, #D4824F 100%);

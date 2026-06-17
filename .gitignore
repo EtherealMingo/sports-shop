@@ -41,8 +41,3 @@ coverage/
 # Misc
 *.tgz
 .cache/
-
-# Sub-projects with own git repos (tracked separately)
-sports_admin/
-sports_miniprogram/
-sports_java/

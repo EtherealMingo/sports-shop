@@ -1,0 +1,12 @@
+// 引入 tuniaoUI 全局样式覆盖
+@import '../../styles/global.scss';
+
+// 引入 TnIcon 图标字体样式
+@import '@tuniao/tn-icon/dist/index.css';
+
+:root,
+page {
+  // 极简主题色 - 暖灰 + 深橙
+  --wot-color-theme: #C2652E;
+  --wot-button-primary-bg-color: #2A2A26;
+}
