@@ -109,39 +109,102 @@ sports/
 
 ## 快速开始
 
-### 1. 数据库初始化
+### 前置依赖
+
+| 项目 | 要求 |
+|------|------|
+| Node.js | >= 18 (小程序) / >= 20 (管理后台) |
+| pnpm | >= 9 |
+| Java | JDK 17 |
+| Maven | >= 3.6 |
+| MySQL | 8.0+ |
+
+---
+
+### 1. Java 后端 (sports_java)
 
 ```bash
 cd sports_java
-mysql -u root -p < src/main/resources/db/init.sql
-```
 
-### 2. 后端启动
+# 1. 创建数据库并初始化表结构
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS sports_db DEFAULT CHARACTER SET utf8mb4"
+mysql -u root -p sports_db < src/main/resources/db/init.sql
 
-```bash
-cd sports_java
-# 修改 src/main/resources/application.yml 中的数据库配置
+# 2. 修改配置
+# 编辑 src/main/resources/application.yml 中的数据库连接信息：
+#   spring.datasource.druid.username / password
+#   wx.appid / secret (微信 AppID 和 Secret)
+
+# 3. 启动
 mvn spring-boot:run
 ```
 
-后端服务将在 `http://localhost:8080` 启动
+服务地址：`http://localhost:8080`  
+Swagger 文档：`http://localhost:8080/swagger-ui.html`
 
-### 3. Web管理后台启动
+---
+
+### 2. Web 管理后台 (sports_admin)
 
 ```bash
 cd sports_admin
+
+# 1. 安装依赖
 npm install
+
+# 2. 启动开发服务器（含 Mock）
+npm run dev
+
+# 3. 启动（无 Mock，连接真实后端）
 npm run start:dev
 ```
 
-管理后台将在 `http://localhost:8000` 启动
+服务地址：`http://localhost:8000`
 
-### 4. 小程序启动
+> 默认使用 Umi Max 内置 Mock 数据，无需后端即可预览页面。如需对接后端，修改 `config/proxy.ts` 中的 target 指向 `http://localhost:8080`。
+
+---
+
+### 3. 微信小程序 (sports_miniprogram)
 
 ```bash
 cd sports_miniprogram
+
+# 1. 安装依赖
 pnpm install
+
+# 2. 启动 H5 开发模式（浏览器预览）
+pnpm dev:h5
+
+# 3. 启动微信小程序模式（微信开发者工具预览）
 pnpm dev:mp
+```
+
+**环境配置**：  
+编辑 `env/.env.development`：
+
+```env
+VITE_WX_APPID=你的微信小程序AppID
+VITE_API_BASE_URL=http://localhost:8080/api
+```
+
+**预览方式**：
+- H5：浏览器打开输出的本地地址即可
+- 微信小程序：将 `dist/dev/mp-weixin` 目录导入微信开发者工具
+
+---
+
+### 一键启动（推荐启动顺序）
+
+```bash
+# 终端 1 — 后端
+cd sports_java && mvn spring-boot:run
+
+# 终端 2 — 管理后台
+cd sports_admin && npm run start:dev
+
+# 终端 3 — 小程序
+cd sports_miniprogram && pnpm dev:h5
 ```
 
 ## 核心功能
@@ -184,13 +247,44 @@ pnpm dev:mp
 
 ## 配置说明
 
-### 小程序配置
-1. 修改 `env/.env.development` 中的 `VITE_WX_APPID` 为你的微信小程序AppID
-2. 修改 `env/.env.development` 中的 `VITE_API_BASE_URL` 为后端API地址
+### 后端配置 (sports_java)
 
-### 后端配置
-1. 修改 `src/main/resources/application.yml` 中的数据库配置
-2. 修改 `src/main/resources/application.yml` 中的微信小程序配置
+编辑 `src/main/resources/application.yml`：
+
+| 配置项 | 说明 | 默认值 |
+|--------|------|--------|
+| `spring.datasource.druid.url` | 数据库连接 | `jdbc:mysql://localhost:3306/sports_db` |
+| `spring.datasource.druid.username` | 数据库用户名 | `root` |
+| `spring.datasource.druid.password` | 数据库密码 | `root` |
+| `jwt.secret` | JWT 签名密钥 | `sports-service-secret-key-2024` |
+| `jwt.expiration` | Token 有效期 | `86400000` (24h) |
+| `wx.appid` | 微信小程序 AppID | 需手动填写 |
+| `wx.secret` | 微信小程序 Secret | 需手动填写 |
+
+### 管理后台配置 (sports_admin)
+
+编辑 `config/proxy.ts` 修改后端代理目标地址：
+
+```ts
+proxy: {
+  '/api': {
+    target: 'http://localhost:8080',
+    changeOrigin: true,
+  },
+}
+```
+
+其他配置在 `config/config.ts` 中（主题、布局、路由等）。
+
+### 小程序配置 (sports_miniprogram)
+
+编辑 `env/.env.development`：
+
+| 配置项 | 说明 | 默认值 |
+|--------|------|--------|
+| `VITE_WX_APPID` | 微信小程序 AppID | 需手动填写 |
+| `VITE_API_BASE_URL` | 后端 API 地址 | `http://192.168.3.122:8080/api` |
+| `VITE_APP_TITLE` | 应用标题 | `体育器材积分系统` |
 
 ## 下一步开发计划
 
