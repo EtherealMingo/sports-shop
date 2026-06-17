@@ -1,0 +1,26 @@
+{
+  "author": "ClawHub",
+  "author_icon": "https://static.pc.yyb.qq.com/wupload2skill-author-icons/1776694449449_clawhub.png",
+  "description": "UI/UX design intelligence and implementation guidance for building polished interfaces. Use when the user asks for UI design, UX flows, information architecture, visual style direction, design systems/tokens, component specs, copy/microcopy, accessibility, or to generate/critique/refine frontend UI (HTML/CSS/JS, React, Next.js, Vue, Svelte, Tailwind). Includes workflows for (1) generating new UI layouts and styling, (2) improving existing UI/UX, (3) producing design-system tokens and component guidelines, and (4) turning UX recommendations into concrete code changes.",
+  "detail_describe": "规划页面布局排版与配色方案\n梳理用户流程与关键交互状态\n输出设计系统token与组件规范\n给出可落地的前端实现方案\n提供可访问性与微文案建议",
+  "display_description": "为前端界面提供设计方案组件规范和可落地代码",
+  "display_name": "UI/UX Pro Max",
+  "download_count": 25598,
+  "download_url": "https://static.pc.yyb.qq.com/wupload2skill-packages/1776694340886_20-UI-UX%20Pro%20Max.zip",
+  "icon": "https://static.pc.yyb.qq.com/wupload2skill-icons/1776694434629_106_UI_UX%20Pro%20Max_UI_UX%E8%AE%BE%E8%AE%A1%E4%B8%93%E5%AE%B6.png",
+  "id": 118,
+  "is_downloaded": false,
+  "last_modified_time": "2026-05-27 14:51:06",
+  "md5": "727a93dc8f088337f94930140a7e8855",
+  "name": "ui-ux-pro-max",
+  "scope": [
+    "main"
+  ],
+  "type": "办公学习",
+  "use_cases": [
+    "给我设计一个 AI 产品官网首页。",
+    "为一款AI产品设计一套登录注册页面。",
+    "给一个移动端电商详情页做信息架构和视觉规范。"
+  ],
+  "version": "1.0.2"
+}
