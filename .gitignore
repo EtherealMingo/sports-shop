@@ -1,43 +1,123 @@
+# ========================================
 # Dependencies
+# ========================================
 node_modules/
 .pnp/
 .pnp.js
+.yarn/
 
-# Build outputs
+# ========================================
+# Build Outputs
+# ========================================
 dist/
 build/
 target/
+out/
+.next/
+.nuxt/
+.output/
 *.tsbuildinfo
 
-# Environment
+# Java / Maven
+*.jar
+*.war
+*.ear
+*.class
+.mvn/
+mvnw
+mvnw.cmd
+
+# ========================================
+# Environment & Secrets
+# ========================================
 .env
 .env.local
 .env.*.local
+.env.production
+.env.test
+*.pem
+*.key
+*.cert
 
-# IDE
+# ========================================
+# IDE & Editor
+# ========================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+.classpath
 
-# OS
+# ========================================
+# OS Generated
+# ========================================
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
+# ========================================
 # Logs
+# ========================================
 *.log
+logs/
 npm-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Temp
+# ========================================
+# Temp & Cache
+# ========================================
 *.tmp
 *.temp
 temp-settings.xml
-
-# Coverage
-coverage/
-
-# Misc
-*.tgz
 .cache/
+.temp/
+*.cache
+.eslintcache
+.stylelintcache
+.prettiercache
+.parcel-cache/
+.webpack/
+.rollup.cache/
+
+# ========================================
+# Testing & Coverage
+# ========================================
+coverage/
+.nyc_output/
+__snapshots__/
+junitreports/
+test-results/
+
+# ========================================
+# Package Manager
+# ========================================
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ========================================
+# Generated / Auto-generated
+# ========================================
+*.generated.*
+generated/
+__generated__/
+schema.graphql
+schema.json
+
+# ========================================
+# Misc
+# ========================================
+*.tgz
+*.gz
+*.zip
+*.7z
+*.rar
+.husky/_/
